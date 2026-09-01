@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>iStyles Support</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500;1,9..144,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf5f0;
+    --surface: #ffffff;
+    --surface-sunken: #f3ebe3;
+    --text: #2a211c;
+    --text-muted: #7c6d64;
+    --accent: #d85a2c;
+    --accent-ink: #fff8f4;
+    --border: #eae0d8;
+    --focus: #1c63d6;
+
+    --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+    --font-body: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17110d;
+      --surface: #211811;
+      --surface-sunken: #1c140f;
+      --text: #f5eae2;
+      --text-muted: #b3a196;
+      --accent: #ff7d49;
+      --accent-ink: #1b0f09;
+      --border: #362920;
+      --focus: #7fb0ff;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #17110d;
+    --surface: #211811;
+    --surface-sunken: #1c140f;
+    --text: #f5eae2;
+    --text-muted: #b3a196;
+    --accent: #ff7d49;
+    --accent-ink: #1b0f09;
+    --border: #362920;
+    --focus: #7fb0ff;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+  }
+
+  .page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 4.5rem 1.5rem 5rem;
+  }
+
+  header.masthead {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 3.25rem;
+  }
+
+  .mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: linear-gradient(155deg, var(--accent), #f0895b);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mark svg { width: 18px; height: 18px; }
+
+  .wordmark {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+  }
+  .wordmark span { color: var(--text-muted); font-weight: 500; }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 0.9rem;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(2.1rem, 5vw, 2.75rem);
+    line-height: 1.12;
+    margin: 0 0 1rem;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
+  }
+
+  .lede {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 46ch;
+    margin: 0 0 2.75rem;
+  }
+
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.75rem;
+    margin-bottom: 3.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+
+  .contact-card .label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 0 0 0.35rem;
+  }
+
+  .contact-card .email {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.15rem;
+    word-break: break-all;
+  }
+
+  .contact-card .response {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-top: 0.4rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    padding: 0.75rem 1.25rem;
+    border-radius: 9px;
+    white-space: nowrap;
+    transition: opacity 0.15s ease;
+    border: none;
+    cursor: pointer;
+  }
+  .btn:hover { opacity: 0.88; }
+  .btn svg { width: 16px; height: 16px; }
+
+  section + section { margin-top: 3rem; }
+
+  h2 {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 0 0 1.4rem;
+  }
+
+  .faq-item {
+    border-top: 1px solid var(--border);
+    padding: 1.35rem 0;
+  }
+  .faq-item:last-child { border-bottom: 1px solid var(--border); }
+
+  .faq-item h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .faq-item p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    max-width: 56ch;
+  }
+
+  .checklist {
+    background: var(--surface-sunken);
+    border-radius: 12px;
+    padding: 1.5rem 1.65rem;
+    margin-top: 0.5rem;
+  }
+  .checklist p {
+    margin: 0 0 0.9rem;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+  }
+  .checklist ul {
+    margin: 0;
+    padding-left: 1.15rem;
+    font-size: 0.92rem;
+  }
+  .checklist li { margin-bottom: 0.4rem; }
+  .checklist li:last-child { margin-bottom: 0; }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 420px) {
+    .contact-card { flex-direction: column; align-items: flex-start; }
+    .btn { width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <header class="masthead">
+    <div class="mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 7.5C4 6.12 5.12 5 6.5 5h11C18.88 5 20 6.12 20 7.5v9c0 1.38-1.12 2.5-2.5 2.5h-11C5.12 19 4 17.88 4 16.5v-9Z" stroke="#fff8f4" stroke-width="1.6"/>
+        <circle cx="12" cy="12" r="3.2" stroke="#fff8f4" stroke-width="1.6"/>
+        <path d="M8.2 5 9.3 3.3h5.4L15.8 5" stroke="#fff8f4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="wordmark">iStyles <span>Support</span></div>
+  </header>
+
+  <p class="eyebrow">Help &amp; Contact</p>
+  <h1>How can we help?</h1>
+  <p class="lede">Questions about filters, styles, or something not working quite right in iStyles — this is the place to reach us.</p>
+
+  <div class="contact-card">
+    <div>
+      <p class="label">Email us directly</p>
+      <div class="email">heroht369@gmail.com</div>
+      <p class="response">We typically reply within 1–2 business days.</p>
+    </div>
+    <button class="btn" type="button" id="copy-email" onclick="copyEmail()">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="12" height="12" rx="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M16 8V6a1.5 1.5 0 0 0-1.5-1.5H6A1.5 1.5 0 0 0 4.5 6v8A1.5 1.5 0 0 0 6 16h2" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span id="copy-label">Copy email</span>
+    </button>
+  </div>
+
+  <section>
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <h3>How do I apply a filter or style to a photo?</h3>
+      <p>Open iStyles, import a photo from your camera or library, then scroll the filter tray at the bottom and tap any style to preview it instantly. Tap the download or share icon in the top right to save your result.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>iStyles can't access my camera or photo library.</h3>
+      <p>Open the iOS Settings app, scroll to iStyles, and make sure Camera and Photos access are turned on. If you denied access when first prompted, this is the only way to re-enable it.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>My edited photo won't save or share.</h3>
+      <p>Make sure you have enough free storage on your device and that Photos access is allowed for iStyles. Restarting the app after granting a new permission usually resolves this.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>I have a question about a purchase or subscription.</h3>
+      <p>Email us with the approximate date and, if you have it, your App Store order number. We can look into billing questions or help you restore a purchase on a new device.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>I'd like to suggest a new filter or feature.</h3>
+      <p>We read every suggestion — email us a short description of the idea and we'll consider it for a future update.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>How do I report a bug?</h3>
+      <p>Email us what happened and the checklist below so we can reproduce it quickly.</p>
+      <div class="checklist">
+        <p>Please include if you can:</p>
+        <ul>
+          <li>Your iPhone model and iOS version (Settings → General → About)</li>
+          <li>The iStyles app version (visible on the app's settings screen)</li>
+          <li>What you were doing right before the issue happened</li>
+          <li>A screenshot, if the issue is visual</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>iStyles</span>
+    <span>Support hours: Mon–Fri</span>
+  </footer>
+</div>
+
+<script>
+  function copyEmail() {
+    var email = "heroht369@gmail.com";
+    var label = document.getElementById("copy-label");
+    var reset = function () {
+      setTimeout(function () { label.textContent = "Copy email"; }, 1800);
+    };
+    var fallback = function () {
+      var ta = document.createElement("textarea");
+      ta.value = email;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).catch(fallback);
+    } else {
+      fallback();
+    }
+    label.textContent = "Copied!";
+    reset();
+  }
+</script>
+
+</body>
+</html>
