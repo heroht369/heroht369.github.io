@@ -3,90 +3,263 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BrainAnatomy - Hỗ trợ</title>
-<meta name="description" content="Trợ giúp và liên hệ cho ứng dụng BrainAnatomy: tìm kiếm, yêu thích, lưu hình và báo lỗi.">
-<link rel="icon" href="brainanatomy/assets/icon.png">
-<link rel="apple-touch-icon" href="brainanatomy/assets/icon.png">
+<title>Tử Vy 60 - Tử vi trọn đời 60 hoa giáp</title>
+<meta name="description" content="Tử Vy 60: tra cứu tử vi trọn đời cho 60 năm Can Chi (Lục thập hoa giáp), có riêng Nam mạng và Nữ mạng. Dành cho iPhone và iPad.">
+<meta property="og:title" content="Tử Vy 60 - Tử vi trọn đời 60 hoa giáp">
+<meta property="og:description" content="Tử vi trọn đời cho 60 năm Can Chi, riêng Nam mạng và Nữ mạng. Dành cho iPhone và iPad.">
+<meta property="og:image" content="https://heroht369.github.io/tuvy60/assets/icon.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#f6efe2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e1830" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="tuvy60/assets/icon.png">
+<link rel="apple-touch-icon" href="tuvy60/assets/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,500;1,9..144,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="brainanatomy/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6efe2;
+    --surface: #fffaf1;
+    --surface-sunken: #efe4d0;
+    --text: #1d1a16;
+    --text-muted: #6b6152;
+    --accent: #a8281e;
+    --accent-ink: #fffaf1;
+    --gold: #9a7224;
+    --border: #e2d4ba;
+    --focus: #1f4fa8;
+    --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --font-body: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0e1830;
+      --surface: #15213d;
+      --surface-sunken: #111b33;
+      --text: #f1ead9;
+      --text-muted: #a9b0c2;
+      --accent: #e2a94a;
+      --accent-ink: #1a1408;
+      --gold: #e2a94a;
+      --border: #26355a;
+      --focus: #ff9a6b;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+  img { max-width: 100%; display: block; }
+
+  .page { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.1rem 4rem; }
+  @media (min-width: 600px) { .page { padding: 4rem 1.5rem 5rem; } }
+
+  .masthead { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 3rem; }
+  .brand { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; color: var(--text); }
+  .brand img { width: 36px; height: 36px; border-radius: 9px; }
+  .wordmark { font-weight: 700; font-size: 1.05rem; }
+  .masthead nav a { color: var(--text-muted); text-decoration: none; font-size: 0.92rem; font-weight: 500; margin-left: 1rem; }
+  .masthead nav a:hover { color: var(--text); }
+
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; align-items: center; }
+  .hero > * { min-width: 0; }
+  @media (min-width: 640px) { .hero { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); } }
+  .eyebrow { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin: 0 0 0.8rem; }
+  h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.1rem, 6vw, 2.9rem); line-height: 1.12; margin: 0 0 1rem; text-wrap: balance; }
+  h1 em { font-style: italic; color: var(--accent); }
+  .lede { font-size: 1.08rem; color: var(--text-muted); margin: 0 0 1.6rem; max-width: 34em; }
+  .hero-art img { width: 100%; height: auto; max-width: 360px; margin: 0 auto; aspect-ratio: 1; object-fit: cover; border-radius: 50%; box-shadow: 0 0 0 6px var(--surface), 0 0 0 7px var(--border); }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--accent); color: var(--accent-ink);
+    border: 1px solid var(--accent); border-radius: 999px;
+    padding: 0.7rem 1.25rem; font: inherit; font-weight: 600; font-size: 0.95rem;
+    text-decoration: none; cursor: pointer;
+  }
+  .btn.secondary { background: transparent; color: var(--text); border-color: var(--border); }
+  .btn[aria-disabled="true"] { opacity: 0.85; cursor: default; }
+  .btn svg { width: 18px; height: 18px; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin: 3rem 0 0; }
+  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1rem; text-align: center; }
+  .stat b { display: block; font-family: var(--font-display); font-size: 1.7rem; line-height: 1.2; color: var(--accent); }
+  .stat span { font-size: 0.85rem; color: var(--text-muted); }
+
+  section { margin-top: 3.5rem; }
+  h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.6rem; margin: 0 0 0.4rem; }
+  .section-lede { color: var(--text-muted); margin: 0 0 1.4rem; }
+  h3 { font-size: 1rem; font-weight: 600; margin: 0 0 0.3rem; }
+
+  .zodiac { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; }
+  @media (min-width: 600px) { .zodiac { grid-template-columns: repeat(6, 1fr); } }
+  .zodiac li { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; text-align: center; }
+  .zodiac img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
+  .zodiac span { display: block; font-size: 0.85rem; font-weight: 600; padding: 0.35rem 0 0.45rem; }
+
+  .features { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
+  @media (min-width: 600px) { .features { grid-template-columns: 1fr 1fr; } }
+  .features li { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.1rem 1.2rem; }
+  .features p { margin: 0; color: var(--text-muted); font-size: 0.95rem; }
+
+  .chapters { counter-reset: ch; list-style: none; padding: 0; margin: 0; display: grid; column-gap: 1.5rem; }
+  @media (min-width: 600px) { .chapters { grid-template-columns: 1fr 1fr; } }
+  .chapters li { counter-increment: ch; display: flex; gap: 0.75rem; align-items: baseline; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+  .chapters li::before { content: counter(ch); font-family: var(--font-display); font-weight: 700; color: var(--gold); min-width: 1.2rem; }
+
+  .contact-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.3rem 1.4rem; margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; }
+  .contact-card .label { margin: 0; font-size: 0.85rem; color: var(--text-muted); }
+  .contact-card .email { font-weight: 700; font-size: 1.15rem; }
+  .contact-card .email a { color: inherit; text-decoration: none; }
+  .contact-card .response { margin: 0.2rem 0 0; font-size: 0.85rem; color: var(--text-muted); }
+
+  .faq-item { padding: 1rem 0; border-bottom: 1px solid var(--border); }
+  .faq-item p { margin: 0; color: var(--text-muted); }
+
+  .note { font-size: 0.88rem; color: var(--text-muted); background: var(--surface-sunken); border-radius: 12px; padding: 0.9rem 1.1rem; margin-top: 3rem; }
+
+  footer { margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); }
+  footer a { color: var(--text-muted); }
+</style>
 </head>
 <body>
 
 <div class="page">
   <header class="masthead">
-    <a class="brand" href="brainanatomy/">
-      <img src="brainanatomy/assets/icon.png" alt="" width="34" height="34">
-      <div class="wordmark">BrainAnatomy <span>Hỗ trợ</span></div>
+    <a class="brand" href="./">
+      <img src="tuvy60/assets/icon.png" alt="" width="36" height="36">
+      <div class="wordmark">Tử Vy 60</div>
     </a>
+    <nav>
+      <a href="#noi-dung">Nội dung</a>
+      <a href="#ho-tro">Hỗ trợ</a>
+    </nav>
   </header>
 
-  <p class="eyebrow">Trợ giúp &amp; Liên hệ</p>
-  <h1>Chúng tôi có thể giúp gì?</h1>
-  <p class="lede">Thắc mắc về cách sử dụng, nội dung giải phẫu hay lỗi trong BrainAnatomy: hãy liên hệ với chúng tôi tại đây.</p>
-
-  <div class="contact-card">
+  <div class="hero">
     <div>
-      <p class="label">Gửi email cho chúng tôi</p>
-      <div class="email"><a href="mailto:heroht369@gmail.com?subject=H%E1%BB%97%20tr%E1%BB%A3%20BrainAnatomy" style="color:inherit;text-decoration:none">heroht369@gmail.com</a></div>
-      <p class="response">Chúng tôi thường phản hồi trong 1–2 ngày làm việc.</p>
+      <p class="eyebrow">Cho iPhone &amp; iPad</p>
+      <h1>Tử vi trọn đời <em>60 hoa giáp</em></h1>
+      <p class="lede">Tra cứu tử vi trọn đời cho đủ 60 năm Can Chi trong vòng Lục thập hoa giáp. Mỗi tuổi có bài luận riêng cho Nam mạng và Nữ mạng, kèm hình minh họa con giáp.</p>
+      <div class="actions">
+        <!-- Khi app đã lên store, thay bằng:
+             <a class="btn" href="https://apps.apple.com/app/idXXXXXXXXXX">Tải trên App Store</a> -->
+        <span class="btn" aria-disabled="true">Sắp có trên App Store</span>
+        <a class="btn secondary" href="#ho-tro">Hỗ trợ</a>
+      </div>
     </div>
-    <button class="btn" type="button" onclick="copyEmail(this)">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M16 8V6a1.5 1.5 0 0 0-1.5-1.5H6A1.5 1.5 0 0 0 4.5 6v8A1.5 1.5 0 0 0 6 16h2" stroke="currentColor" stroke-width="1.6"/></svg>
-      <span class="copy-label">Sao chép email</span>
-    </button>
+    <div class="hero-art">
+      <img src="tuvy60/assets/hero.jpg" width="720" height="720" alt="Tranh minh họa rồng, con giáp tuổi Thìn">
+    </div>
   </div>
 
+  <div class="stats">
+    <div class="stat"><b>60</b><span>năm Can Chi</span></div>
+    <div class="stat"><b>120</b><span>bài tử vi Nam &amp; Nữ</span></div>
+    <div class="stat"><b>12</b><span>con giáp</span></div>
+  </div>
+
+  <section id="noi-dung">
+    <h2>12 con giáp, 60 năm tuổi</h2>
+    <p class="section-lede">Mỗi con giáp ứng với 5 năm Can Chi. Chọn đúng năm sinh của bạn, ví dụ Canh Tý, Tân Sửu hay Giáp Thìn.</p>
+    <ul class="zodiac">
+      <li><img src="tuvy60/assets/1_ty.jpg" alt="" loading="lazy" width="320" height="320"><span>Tý</span></li>
+      <li><img src="tuvy60/assets/2_suu.jpg" alt="" loading="lazy" width="320" height="320"><span>Sửu</span></li>
+      <li><img src="tuvy60/assets/3_dan.jpg" alt="" loading="lazy" width="320" height="320"><span>Dần</span></li>
+      <li><img src="tuvy60/assets/4_mao.jpg" alt="" loading="lazy" width="320" height="320"><span>Mão</span></li>
+      <li><img src="tuvy60/assets/5_thin.jpg" alt="" loading="lazy" width="320" height="320"><span>Thìn</span></li>
+      <li><img src="tuvy60/assets/6_ty.jpg" alt="" loading="lazy" width="320" height="320"><span>Tỵ</span></li>
+      <li><img src="tuvy60/assets/7_ngo.jpg" alt="" loading="lazy" width="320" height="320"><span>Ngọ</span></li>
+      <li><img src="tuvy60/assets/8_mui.jpg" alt="" loading="lazy" width="320" height="320"><span>Mùi</span></li>
+      <li><img src="tuvy60/assets/9_than.jpg" alt="" loading="lazy" width="320" height="320"><span>Thân</span></li>
+      <li><img src="tuvy60/assets/10_dau.jpg" alt="" loading="lazy" width="320" height="320"><span>Dậu</span></li>
+      <li><img src="tuvy60/assets/11_tuat.jpg" alt="" loading="lazy" width="320" height="320"><span>Tuất</span></li>
+      <li><img src="tuvy60/assets/12_hoi.jpg" alt="" loading="lazy" width="320" height="320"><span>Hợi</span></li>
+    </ul>
+  </section>
+
   <section>
-    <h2>Câu hỏi thường gặp</h2>
+    <h2>Trong mỗi bài tử vi</h2>
+    <p class="section-lede">Bài luận cho từng tuổi được chia thành các phần rõ ràng, dễ đọc.</p>
+    <ol class="chapters">
+      <li>Tổng quan cuộc đời</li>
+      <li>Tình duyên</li>
+      <li>Gia đạo, công danh</li>
+      <li>Những tuổi hợp làm ăn</li>
+      <li>Lựa chọn vợ, chồng</li>
+      <li>Những tuổi đại kỵ</li>
+      <li>Những năm khó khăn nhất</li>
+      <li>Diễn tiến từng năm</li>
+    </ol>
+  </section>
 
-    <div class="faq-item">
-      <h3>Tôi có cần tạo tài khoản không?</h3>
-      <p>Không. Bạn chỉ cần mở ứng dụng là dùng được ngay, không cần đăng ký hay đăng nhập.</p>
+  <section>
+    <h2>Dễ dùng</h2>
+    <ul class="features">
+      <li>
+        <h3>Tìm tuổi thật nhanh</h3>
+        <p>Gõ tên năm có dấu hoặc không dấu đều được, ví dụ "Canh Tý" hay "canh ty".</p>
+      </li>
+      <li>
+        <h3>Nam mạng &amp; Nữ mạng</h3>
+        <p>Chuyển giữa bài luận Nam mạng và Nữ mạng chỉ với một lần chạm.</p>
+      </li>
+      <li>
+        <h3>Xem và lưu hình</h3>
+        <p>Chạm vào ảnh để xem toàn màn hình, vuốt chuyển ảnh, chụm để phóng to và lưu vào Photos.</p>
+      </li>
+      <li>
+        <h3>Không cần tài khoản</h3>
+        <p>Mở ra là dùng. Nội dung có sẵn trong ứng dụng, không cần đăng ký hay đăng nhập.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="ho-tro">
+    <h2>Hỗ trợ &amp; Liên hệ</h2>
+    <p class="section-lede">Thắc mắc về cách sử dụng, nội dung hay lỗi trong ứng dụng: hãy liên hệ với chúng tôi.</p>
+    <div class="contact-card">
+      <div>
+        <p class="label">Gửi email cho chúng tôi</p>
+        <div class="email"><a href="mailto:heroht369@gmail.com?subject=H%E1%BB%97%20tr%E1%BB%A3%20T%E1%BB%AD%20Vy%2060">heroht369@gmail.com</a></div>
+        <p class="response">Chúng tôi thường phản hồi trong 1–2 ngày làm việc.</p>
+      </div>
+      <button class="btn" type="button" onclick="copyEmail(this)">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M16 8V6a1.5 1.5 0 0 0-1.5-1.5H6A1.5 1.5 0 0 0 4.5 6v8A1.5 1.5 0 0 0 6 16h2" stroke="currentColor" stroke-width="1.6"/></svg>
+        <span class="copy-label">Sao chép email</span>
+      </button>
     </div>
 
     <div class="faq-item">
-      <h3>Ứng dụng có dùng được khi không có mạng không?</h3>
-      <p>Có. Toàn bộ chủ đề và hình ảnh có sẵn trong ứng dụng, nên bạn có thể xem mọi nội dung khi không có mạng.</p>
+      <h3>Tôi không biết năm sinh của mình là năm Can Chi nào?</h3>
+      <p>Năm Can Chi tính theo âm lịch. Nếu bạn sinh vào tháng 1 hoặc đầu tháng 2 dương lịch, trước Tết Nguyên Đán, thì tuổi của bạn thuộc năm Can Chi trước đó.</p>
     </div>
-
-    <div class="faq-item">
-      <h3>Tìm kiếm cấu trúc thế nào?</h3>
-      <p>Gõ tên cấu trúc vào ô tìm kiếm ở đầu màn hình. Bạn có thể tìm theo tên tiếng Việt (ví dụ "Đồi thị") hoặc tên tiếng Anh (ví dụ "Thalamus").</p>
-    </div>
-
-    <div class="faq-item">
-      <h3>Dùng mục Yêu thích thế nào?</h3>
-      <p>Bấm ngôi sao trên một chủ đề để thêm vào Yêu thích. Bấm ngôi sao cạnh số lượng mục để chỉ hiện các chủ đề yêu thích; bấm lần nữa để hiện tất cả.</p>
-    </div>
-
     <div class="faq-item">
       <h3>Không lưu được hình vào Photos.</h3>
-      <p>Mở ứng dụng Cài đặt của iOS, vào BrainAnatomy › Ảnh và chọn "Chỉ thêm ảnh". Nếu bạn đã từ chối ở lần hỏi đầu tiên, đây là cách duy nhất để bật lại. Đồng thời kiểm tra bộ nhớ máy còn trống.</p>
+      <p>Mở ứng dụng Cài đặt của iOS, vào Tử Vy 60 › Ảnh và chọn "Chỉ thêm ảnh". Đồng thời kiểm tra bộ nhớ máy còn trống.</p>
     </div>
-
-    <div class="faq-item">
-      <h3>Tôi thấy nội dung giải phẫu bị sai.</h3>
-      <p>Cảm ơn bạn! Hãy gửi email kèm tên chủ đề và nội dung cần sửa. Chúng tôi sẽ cập nhật trong các phiên bản sau.</p>
-    </div>
-
     <div class="faq-item">
       <h3>Làm sao để báo lỗi?</h3>
-      <p>Gửi email mô tả lỗi kèm các thông tin dưới đây để chúng tôi tái hiện nhanh.</p>
-      <div class="checklist">
-        <p>Vui lòng gửi kèm nếu được:</p>
-        <ul>
-          <li>Dòng iPhone/iPad và phiên bản iOS (Cài đặt → Cài đặt chung → Giới thiệu)</li>
-          <li>Phiên bản BrainAnatomy (App Store › BrainAnatomy)</li>
-          <li>Bạn đang thao tác gì ngay trước khi lỗi xảy ra</li>
-          <li>Ảnh chụp màn hình nếu lỗi về hiển thị</li>
-        </ul>
-      </div>
+      <p>Gửi email mô tả lỗi kèm dòng iPhone/iPad, phiên bản iOS, tên năm đang xem và ảnh chụp màn hình nếu có.</p>
     </div>
   </section>
 
-  <p class="note" style="margin-top:2.5rem">BrainAnatomy chỉ phục vụ học tập và tra cứu, không phải thiết bị y tế và không dùng để chẩn đoán hay điều trị.</p>
+  <p class="note">Nội dung tử vi trong Tử Vy 60 mang tính tham khảo và giải trí theo văn hóa truyền thống, không thay thế cho lời khuyên chuyên môn.</p>
+
+  <footer>
+    <span>© 2026 H369 · Tử Vy 60</span>
+    <span><a href="mailto:heroht369@gmail.com">heroht369@gmail.com</a></span>
+  </footer>
 </div>
 
 <script>
